@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "decklist-extractor"
+version = "0.1.0"
+description = "A hackathon project to grab plaintext decklists from various sources."
+authors = ["Alexander Gimmi <iambroadband@gmail.com>"]
+readme = "README.md"
+packages = [{include = "decklist_extractor", from = "src"}]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+src_paths = ["scooze", "tests"]
+
+[tool.poetry.dependencies]
+python = ">=3.11, <4"
+requests = "^2.31.0"
+scooze = "^1.0.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+coverage = "^7.3.2"
+black = "^24.2.0"
+isort = "^5.12.0"
