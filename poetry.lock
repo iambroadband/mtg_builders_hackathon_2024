@@ -32,6 +32,29 @@ test = ["anyio[trio]", "coverage[toml] (>=7)", "exceptiongroup (>=1.2.0)", "hypo
 trio = ["trio (>=0.23)"]
 
 [[package]]
+name = "beanie"
+version = "1.25.0"
+description = "Asynchronous Python ODM for MongoDB"
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "beanie-1.25.0-py3-none-any.whl", hash = "sha256:4436ac740718ccd62b21576778679ac972359fce2938557890c576adbbf5e244"},
+    {file = "beanie-1.25.0.tar.gz", hash = "sha256:f153866b9ba015274102e10a397602d088fc039b705bd806cb447c898cd2979b"},
+]
+
+[package.dependencies]
+click = ">=7"
+lazy-model = "0.2.0"
+motor = ">=2.5.0,<4.0.0"
+pydantic = ">=1.10,<3.0"
+toml = "*"
+
+[package.extras]
+doc = ["Markdown (>=3.3)", "Pygments (>=2.8.0)", "jinja2 (>=3.0.3)", "mkdocs (>=1.4)", "mkdocs-material (>=9.0)", "pydoc-markdown (>=4.8)"]
+queue = ["beanie-batteries-queue (>=0.2)"]
+test = ["asgi-lifespan (>=1.0.1)", "dnspython (>=2.1.0)", "fastapi (>=0.100)", "flake8 (>=3)", "httpx (>=0.23.0)", "pre-commit (>=2.3.0)", "pydantic-extra-types (>=2)", "pydantic-settings (>=2)", "pydantic[email]", "pyright (>=0)", "pytest (>=6.0.0)", "pytest-asyncio (>=0.21.0)", "pytest-cov (>=2.8.1)"]
+
+[[package]]
 name = "black"
 version = "24.2.0"
 description = "The uncompromising code formatter."
@@ -599,6 +622,20 @@ files = [
 colors = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "lazy-model"
+version = "0.2.0"
+description = ""
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "lazy-model-0.2.0.tar.gz", hash = "sha256:57c0e91e171530c4fca7aebc3ac05a163a85cddd941bf7527cc46c0ddafca47c"},
+    {file = "lazy_model-0.2.0-py3-none-any.whl", hash = "sha256:5a3241775c253e36d9069d236be8378288a93d4fc53805211fd152e04cc9c342"},
+]
+
+[package.dependencies]
+pydantic = ">=1.9.0"
+
+[[package]]
 name = "motor"
 version = "3.3.2"
 description = "Non-blocking MongoDB driver for Tornado or asyncio"
@@ -794,6 +831,25 @@ files = [
 
 [package.dependencies]
 typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
+
+[[package]]
+name = "pydantic-settings"
+version = "2.2.1"
+description = "Settings management using Pydantic"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pydantic_settings-2.2.1-py3-none-any.whl", hash = "sha256:0235391d26db4d2190cb9b31051c4b46882d28a51533f97440867f012d4da091"},
+    {file = "pydantic_settings-2.2.1.tar.gz", hash = "sha256:00b9f6a5e95553590434c0fa01ead0b216c3e10bc54ae02e37f359948643c5ed"},
+]
+
+[package.dependencies]
+pydantic = ">=2.3.0"
+python-dotenv = ">=0.21.0"
+
+[package.extras]
+toml = ["tomli (>=2.0.1)"]
+yaml = ["pyyaml (>=6.0.1)"]
 
 [[package]]
 name = "pymongo"
@@ -1147,22 +1203,24 @@ use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "scooze"
-version = "1.0.5"
+version = "1.0.6"
 description = "A flexible data layer for applications working with Magic: the Gathering cards, decks, and tournaments."
 optional = false
 python-versions = ">=3.11,<4"
 files = [
-    {file = "scooze-1.0.5-py3-none-any.whl", hash = "sha256:d72e4688350ca50fc08ad29dffdc13895c04acb9f2162b87b7a5ed6e5796c49d"},
-    {file = "scooze-1.0.5.tar.gz", hash = "sha256:6cb42f3563ece345a8696671ed88b27dbf5ac0cb091404336c5bf7c808ab0142"},
+    {file = "scooze-1.0.6-py3-none-any.whl", hash = "sha256:f34287bb94fedd4fc48e634a9aef31cfc55a5ae920960c6166621a10bf7a4b7e"},
+    {file = "scooze-1.0.6.tar.gz", hash = "sha256:cdcc9473938efd4658b55a55fd7d0fcd70b4b495bb3feec7e0b8de212a9f6f0f"},
 ]
 
 [package.dependencies]
+beanie = ">=1.23.0,<2.0.0"
 cleo = ">=2.0.1,<3.0.0"
 docker = ">=6.1.3,<7.0.0"
 fastapi = ">=0.100.0,<1.0.0"
 frozendict = ">=2.3.8,<3.0.0"
 ijson = ">=3.2.3,<4.0.0"
 motor = ">=3.2.0,<4.0.0"
+pydantic-settings = ">=2.0.3,<3.0.0"
 requests = ">=2.31.0,<3.0.0"
 uvicorn = {version = ">=0.23.1,<0.24.0", extras = ["standard"]}
 
@@ -1193,6 +1251,17 @@ anyio = ">=3.4.0,<5"
 
 [package.extras]
 full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart (>=0.0.7)", "pyyaml"]
+
+[[package]]
+name = "toml"
+version = "0.10.2"
+description = "Python Library for Tom's Obvious, Minimal Language"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+files = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
 
 [[package]]
 name = "typing-extensions"
@@ -1478,4 +1547,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11, <4"
-content-hash = "dac3176f3d55aa073a0fe835d81c8c0db4cd7b8acd35e8ac0acb47303a309de0"
+content-hash = "57c5e5de1a88631c4e594f4f7a6a0d446719d5b9112293c2b1b58d85db09696e"
